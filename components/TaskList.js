@@ -10,6 +10,7 @@ const TaskList = ({ tasks, handleDeleteTask }) => {
           <Pressable
             style={styles.deleteButton}
             onPress={() => handleDeleteTask(index)}
+            testID="buttonDelete"
           >
             <Text style={styles.deleteButtonText}>Delete</Text>
           </Pressable>

@@ -10,7 +10,7 @@ const InputArea = ({ task, setTask, handleAddTask }) => {
         value={task}
         placeholder='Enter task'
       />
-      <Pressable style={styles.addButton} onPress={handleAddTask}>
+      <Pressable style={styles.addButton} onPress={handleAddTask} testID="buttonAdd">
         <Text style={styles.addButtonText}>Add</Text>
       </Pressable>
     </View>
