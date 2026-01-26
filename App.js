@@ -5,17 +5,7 @@ import InputArea from './components/InputArea';
 import TaskList from './components/TaskList';
 
 const App = () => {
-  const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
-
-  const handleAddTask = () => {
-    if (task.trim()) {
-      setTasks((curTasks) => {
-        return [...curTasks, task];
-      });
-      setTask('');
-    }
-  };
 
   const handleDeleteTask = (index) => {
     setTasks((curTasks) => { 
@@ -29,11 +19,7 @@ const App = () => {
       <View style={styles.subContainer}>
         <Text style={styles.title}>To-Do App</Text>
 
-        <InputArea
-          task={task}
-          setTask={setTask}
-          handleAddTask={handleAddTask}
-        />
+        <InputArea setTasks={setTasks}/>
 
         <TaskList tasks={tasks} handleDeleteTask={handleDeleteTask} />
       </View>

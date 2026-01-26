@@ -1,7 +1,19 @@
 import { View, TextInput, StyleSheet, Text, Pressable } from 'react-native';
 import { PropTypes } from 'prop-types';
+import { useState } from 'react';
 
-const InputArea = ({ task, setTask, handleAddTask }) => {
+const InputArea = ({ setTasks }) => {
+  const [task, setTask] = useState('');
+
+  const handleAddTask = () => {
+    if (task.trim()) {
+      setTasks((curTasks) => {
+        return [...curTasks, task];
+      });
+      setTask('');
+    }
+  };
+
   return (
     <View style={styles.inputContainer}>
       <TextInput
@@ -10,7 +22,11 @@ const InputArea = ({ task, setTask, handleAddTask }) => {
         value={task}
         placeholder='Enter task'
       />
-      <Pressable style={styles.addButton} onPress={handleAddTask} testID="buttonAdd">
+      <Pressable
+        style={styles.addButton}
+        onPress={handleAddTask}
+        testID='buttonAdd'
+      >
         <Text style={styles.addButtonText}>Add</Text>
       </Pressable>
     </View>
@@ -45,9 +61,7 @@ const styles = StyleSheet.create({
 });
 
 InputArea.propTypes = {
-  task: PropTypes.string,
-  setTask: PropTypes.func,
-  handleAddTask: PropTypes.func,
-}
+  setTasks: PropTypes.func,
+};
 
 export default InputArea;
